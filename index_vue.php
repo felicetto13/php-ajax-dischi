@@ -30,11 +30,12 @@
         <div class="main-content">
             <div class="container">
                 <label class="fs-5 text-white" for="filtro">Filtra per genere: </label>
-                <select class="select-genre" name="filtro" id="filtro-genere">
+                <select class="select-genre" name="filtro" id="filtro-genere" v-model="genreSelected">
                     <option value="">All</option>
+                    <option v-for="genre in genres" :value="genre">{{genre}}</option>
                 </select>
                 <div class="row row-cols-5">
-                    <div class="col" v-for="disk in disks">
+                    <div class="col" v-for="disk in getDisksFiltered">
                         <div class="card">
                             <img :src="disk.poster" :alt="disk.author" />
                             <div class="card-body">
